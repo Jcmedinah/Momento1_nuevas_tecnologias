@@ -13,7 +13,7 @@ def mostrar_inventario(libros:dict)->None:
     print('Inventario actual de Libros')
     for l in libros.keys():
         libro = libros[l]
-        print(f'Libro:{l}, Cantidad: {libro.get('cantidad')}, Categoria: {libro.get('categoria')}')
+        print(f'Libro: {l}, Cantidad: {libro.get('cantidad')}, Categoria: {libro.get('categoria')}')
     input('Presione Enter para continuar ...')
 
 def buscar_libro_por_nombre():
