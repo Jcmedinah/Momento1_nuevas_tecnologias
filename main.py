@@ -6,8 +6,13 @@ def ingresar_libro(libros:dict)->dict:
     libros[nombre]= {'cantidad':cantidad,'categoria':categoria}
     return libros
 
-def actualizar_cantidades():
-    pass
+def actualizar_cantidades(libros:dict):
+    print('Buscar libro por nombre')
+    nombre = input('Ingrese el nombre del libro')
+    libro = libros.get(nombre)
+    if libro:
+        libro['cantidad'] = int(input(('Ingrese cantidad disponible: ')))
+    return libros
 
 def mostrar_inventario(libros:dict)->None:
     print('Inventario actual de Libros')
@@ -24,8 +29,14 @@ def buscar_libro_por_nombre(libros:dict)->None:
         return f'Libro: {nombre}, Cantidad: {libro.get('cantidad')}, Categoria: {libro.get('categoria')}'
     return 'No se encontro el libro'
 
-def prestar_libro():
-    pass
+def prestar_libro(libros):
+    print('Buscar libro por nombre')
+    nombre = input('Ingrese el nombre del libro')
+    libro = libros.get(nombre)
+    if libro:
+        if libro['cantidad'] > 0:
+            libro['cantidad']-=1
+        return libros
 
 def main():
 
@@ -44,7 +55,7 @@ def main():
             case 1:
                 libros = ingresar_libro(libros)
             case 2:
-                print('Actualizar cantidades')
+                libros = actualizar_cantidades(libros)
             case 3:
                 mostrar_inventario(libros)
             case 4:
