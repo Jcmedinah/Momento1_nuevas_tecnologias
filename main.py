@@ -1,7 +1,9 @@
+from modules.utils import obtener_cantidad
+
 def ingresar_libro(libros:dict)->dict:
     print('Ingresar libro')
     nombre = input('Ingrese el nombre del libro: ')
-    cantidad = int(input('Ingrese cantidad disponible: '))
+    cantidad = obtener_cantidad(input('Ingrese cantidad disponible: '))
     categoria = input('Ingrese la categoria (Matematicas,Novela,Sci-Fi,Auto-ayuda,etc): ')
     libros[nombre]= {'cantidad':cantidad,'categoria':categoria}
 
