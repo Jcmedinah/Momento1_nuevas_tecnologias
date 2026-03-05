@@ -1,5 +1,18 @@
+def ingresar_libro():
+    pass
+
+def actualizar_cantidades():
+    pass
+
+def mostrar_inventario():
+    pass
+
+def buscar_libro_por_nombre():
+    pass
 
 def main():
+
+
     menu = True
     while menu:
         print('Gestion de Libros Edulend\n' \
@@ -21,5 +34,7 @@ def main():
             case 5:
                 print('Saliendo')
                 menu = False
+
+
 if __name__ == '__main__':
     main()
