@@ -12,12 +12,17 @@ def actualizar_cantidades():
 def mostrar_inventario(libros:dict)->None:
     print('Inventario actual de Libros')
     for l in libros.keys():
-        libro = libros[l]
+        libro = libros.get(l)
         print(f'Libro: {l}, Cantidad: {libro.get('cantidad')}, Categoria: {libro.get('categoria')}')
     input('Presione Enter para continuar ...')
 
-def buscar_libro_por_nombre():
-    pass
+def buscar_libro_por_nombre(libros:dict)->None:
+    print('Buscar libro por nombre')
+    nombre = input('Ingrese el nombre del libro')
+    libro = libros.get(nombre)
+    if libro:
+        return f'Libro: {nombre}, Cantidad: {libro.get('cantidad')}, Categoria: {libro.get('categoria')}'
+    return 'No se encontro el libro'
 
 def prestar_libro():
     pass
@@ -43,7 +48,7 @@ def main():
             case 3:
                 mostrar_inventario(libros)
             case 4:
-                print('Buscar libro por nombre')
+                print(buscar_libro_por_nombre(libros))
             case 5:
                 print('Saliendo')
                 menu = False
