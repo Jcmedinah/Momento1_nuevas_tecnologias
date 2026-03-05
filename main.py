@@ -1,18 +1,25 @@
 def ingresar_libro(libros:dict)->dict:
     print('Ingresar libro')
     nombre = input('Ingrese el nombre del libro: ')
-    cantidad = input('Ingrese cantidad disponible: ')
+    cantidad = int(input('Ingrese cantidad disponible: '))
     categoria = input('Ingrese la categoria (Matematicas,Novela,Sci-Fi,Auto-ayuda,etc): ')
-    libros[nombre:{'cantidad':cantidad,'categoria':categoria}]
+    libros[nombre]= {'cantidad':cantidad,'categoria':categoria}
     return libros
 
 def actualizar_cantidades():
     pass
 
-def mostrar_inventario():
-    pass
+def mostrar_inventario(libros:dict)->None:
+    print('Inventario actual de Libros')
+    for l in libros.keys():
+        libro = libros[l]
+        print(f'Libro:{l}, Cantidad: {libro.get('cantidad')}, Categoria: {libro.get('categoria')}')
+    input('Presione Enter para continuar ...')
 
 def buscar_libro_por_nombre():
+    pass
+
+def prestar_libro():
     pass
 
 def main():
@@ -30,11 +37,11 @@ def main():
         opcion = int(input('Selecciona una opcion:'))
         match opcion:
             case 1:
-                ingresar_libro()
+                libros = ingresar_libro(libros)
             case 2:
                 print('Actualizar cantidades')
             case 3:
-                print('Mostrar inventario')
+                mostrar_inventario(libros)
             case 4:
                 print('Buscar libro por nombre')
             case 5:
