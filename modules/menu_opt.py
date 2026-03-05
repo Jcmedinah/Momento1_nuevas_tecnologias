@@ -5,7 +5,12 @@ def ingresar_libro(libros:dict)->dict:
     nombre = input('Ingrese el nombre del libro: ')
     cantidad = obtener_cantidad(input('Ingrese cantidad disponible: '))
     categoria = input('Ingrese la categoria (Matematicas,Novela,Sci-Fi,Auto-ayuda,etc): ')
-    libros[nombre]= {'cantidad':cantidad,'categoria':categoria}
+    if not libros.get(nombre):
+        libros[nombre]= {'cantidad':cantidad,'categoria':categoria}
+        input('Libro creado con exito. Presiona Enter para continuar ...')
+        return
+    input('Libro ya existe en la base de datos.Presiona Enter para continuar.')
+    
 
 def actualizar_cantidades(libros:dict):
     libro,nombre = buscar_por_nombre(libros)
@@ -14,6 +19,7 @@ def actualizar_cantidades(libros:dict):
         input('Presione Enter para continuar ...')
         return
     libro['cantidad'] = obtener_cantidad(input(('Ingrese cantidad disponible: ')))
+    input(f'Se actualizo las cantidades del libro {nombre} exitosamente, hay {libro['cantidad']} unds. presione Enter para continuar')
         
 
 def mostrar_inventario(libros:dict)->None:
@@ -25,7 +31,7 @@ def mostrar_inventario(libros:dict)->None:
 
 def buscar_por_nombre(libros):
     print('Buscar libro por nombre')
-    nombre = input('Ingrese el nombre del libro')
+    nombre = input('Ingrese el nombre del libro: ')
     return libros.get(nombre),nombre
     
 def buscar_libro_por_nombre(libros:dict)->None:
@@ -39,3 +45,9 @@ def prestar_libro(libros):
     if libro:
         if libro['cantidad'] > 0:
             libro['cantidad']-=1
+            input(f'Se presto el libro {nombre} exitosamente, quedan {libro['cantidad']} unds. presione Enter para continuar')
+            return
+        input('No hay suficiente cantidad para prestar el libro. Presione Enter para continuar...')
+        return
+    input('No existe el libro buscado. Presione Enter para continuar ...')
+    return
